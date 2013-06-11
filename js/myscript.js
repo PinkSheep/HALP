@@ -39,6 +39,10 @@ function createOptions() {
 
 function getSelectedOption(){
 	var e = document.getElementById("dropdown");
+	// guard against empty learning set pulldown
+	if (e.selectedIndex == -1)
+          return '';
+
 	var strUser = e.options[e.selectedIndex].text;
 	return strUser;
 }
