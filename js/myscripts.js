@@ -1,13 +1,14 @@
 function init() {
   $("#createButton").click(handleCreateButtonClick);
   $("#saveButton").click(handleSaveButtonClick);
-  createOptions();
-  dropdownChange();
-
-}
+  var isEmpty = createOptions();
+  if (!isEmpty){
+  	dropdownChange();
+	}
+ }
 
 function handleCreateButtonClick(){
-  var input = $("#appendedInputButton").val();
+	var input = $("#appendedInputButton").val();
 	if (!(input==null || input=="")) {
 		createKey(input);
 		createOptions();
@@ -19,7 +20,9 @@ function handleSaveButtonClick(){
 	if (!(input1==null || input1=="") && !(input2==null || input2=="")) {
 		var key = getSelectedOption();
 		saveCards(key,input1,input2);
+		dropdownChange();
 	}
+
 }
 
 function createKey(key){
@@ -31,10 +34,24 @@ function createKey(key){
 function createOptions() {
     var localStorageKeys = Object.keys(localStorage);
     var options = "";
-    for (var i = 0; i < localStorage.length; i++){
-   	 	options += "<option value=\""+i+"\">" + localStorageKeys[i] + "<\/option>";
-	}
-	document.getElementById("dropdown").innerHTML = options;
+    if (localStorage.length > 0){
+    	for (var i = 0; i < localStorage.length; i++){
+   	 		options += "<option value=\""+i+"\">" + localStorageKeys[i] + "<\/option>";
+		}
+		document.getElementById("dropdown").innerHTML = options;
+		return false
+	} 
+	return true;
+}
+
+function setSelectedOption(key){
+	var sel = document.getElementById('dropdown');
+    for(var i = 0, j = sel.options.length; i < j; ++i) {
+        if(sel.options[i].innerHTML === key) {
+           sel.selectedIndex = i;
+           break;
+        }
+    }
 }
 
 function getSelectedOption(){
@@ -84,8 +101,8 @@ function addCardList(key){
 	var a = getStoreArray(key);
 	for (var i = 0; i < a.length; i++){
 		var cardArray = a[i];
-   	 	htmlStringFront += "<div class=\"card\">" + cardArray[0] + "<\/div>";
-   	 	htmlStringBack += "<div class=\"card\">" + cardArray[1] + "<\/div>";
+   	 	htmlStringFront += "<div class=\"card\">" + cardArray[0]+ "</div>";
+   	 	htmlStringBack += "<div class=\"card \">" + cardArray[1]+ "</div>";
 	}
 	list1.innerHTML = htmlStringFront;
 	list2.innerHTML = htmlStringBack;

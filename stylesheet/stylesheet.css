@@ -1,0 +1,32 @@
+#blue-background{background-color:#b4d4ff;}
+.card{height: 150px; 
+	font-size: 20px;
+    border: 1px solid #ddd;
+  	margin-top: 20px;
+	margin-bottom: 20px; 
+	text-align: center;
+ -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          }
+div.card:hover,
+div.card:focus {
+  border-color: #0088cc;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+     -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+          box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+div.card:link{
+	color:black;
+}
+ul, li {
+    list-style-type: none;
+}
+#fullwidth{width:100%;}
